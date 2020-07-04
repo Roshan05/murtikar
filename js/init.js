@@ -47,7 +47,7 @@ function getCardElem(imageElem, counter){
 
 function getModalElem(){
 	var str = `
-		    <form class="col s6" id="output_block">
+		    <form class="col s12 l6" id="output_block">
 		        <div class="input-field col s12">
 		          <i class="material-icons prefix">account_circle</i>
 		          <input id="icon_prefix" type="text" class="validate">
@@ -71,7 +71,7 @@ function getModalElem(){
 
 function markThisClicked(i){
 	clickedImg = i;
-	document.getElementById("modalimage").innerHTML = `<img src="`+images_list[i].src+`" style="width: 450px">`;
+	document.getElementById("modalimage").innerHTML = `<img src="`+images_list[i].src+`" style="width: 400px">`;
 	document.getElementById("output_block").innerHTML = getModalElem();
 }
 
