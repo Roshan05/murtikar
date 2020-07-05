@@ -3,11 +3,14 @@
 
     $('.sidenav').sidenav();
     $('.modal').modal();
+    $('.slider').slider();
+    $('.materialboxed').materialbox();
     layCards();
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space
 
+var isVerifyed = false;
 var clickedImg = -1;
 var images_list = [
 {
@@ -36,7 +39,7 @@ var images_list = [
 function getCardElem(imageElem, counter){
 	var str = `<div class="col s12 m6"><div class="card">
 	           <div class="card-image">
-	             	<img src="` + imageElem.src + `">
+	             	<img class="materialboxed" src="` + imageElem.src + `">
 	             	<span class="card-title">` + imageElem.title + `</span></div>
 	             <div class="card-content">
 	             	<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
@@ -72,7 +75,16 @@ function getModalElem(){
 function markThisClicked(i){
 	clickedImg = i;
 	document.getElementById("modalimage").innerHTML = `<img src="`+images_list[i].src+`" style="width: 400px">`;
+	//document.getElementById("output_block").innerHTML = getModalElem();
+
+	if(isVerifyed != true)
+	{
 	document.getElementById("output_block").innerHTML = getModalElem();
+	}else
+	{
+	var out = document.getElementById("output_block");
+	out.innerHTML = "<h5>Thanks For The Enquiry! </h5><br><h4>Price : ₹" + images_list[clickedImg].price + "</h4>"; 
+	}
 }
 
 function layCards(){
@@ -113,18 +125,20 @@ function handleOnGetPrice(){
 	console.log("Clicked image " + clickedImg + " name: " + name + " phone:" + phone);
 	/// Post Request Start
 
-fetch("https://api.apispreadsheets.com/data/682/", {
+    fetch("https://api.apispreadsheets.com/data/682/", {
 	method: "POST",
 	body: JSON.stringify({"data": [{"clickedimg": clickedImg, "name": name, "phone": phone, "price": images_list[clickedImg].price}]}),
-}).then(res =>{
-	if (res.status === 201){
+    }).then(res =>{
+		if (res.status === 201){
 		// SUCCESS
-	}
-	else{
+		}
+		else{
 		// ERROR
-	}
-})
+		}
+    })
 	/// Post Request End
 
-	out.innerHTML = "Thanks For The Enquiry!<br>Price : " + images_list[clickedImg].price ; 
+	out.innerHTML = "<h5>Thanks For The Enquiry! </h5><br><h4>Price : ₹" + images_list[clickedImg].price + "</h4>"; 
+
+	isVerifyed = true;
 }
