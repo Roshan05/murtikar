@@ -14,24 +14,24 @@ var isVerifyed = false;
 var clickedImg = -1;
 var images_list = [
 {
-	src: "images/110.jpg",
-	title: "Title for image 1",
-	price: "100"
+	src: "images/11.jpg",
+	title: "Ganesha on Sinhasan",
+	price: "51000"
 },
 {
-	src: "images/111.jpg",
-	title: "Title for image 2",
-	price: "200"
+	src: "images/22.jpg",
+	title: "Ganesha Carved in Antique Wood",
+	price: "12000"
 },
 {
-	src: "images/111.jpg",
-	title: "Title for image 3",
-	price: "300"
+	src: "images/33.jpg",
+	title: "Sleeping Ganesh",
+	price: "2100"
 },
 {
-	src: "images/111.jpg",
-	title: "Title for image 4",
-	price: "400"
+	src: "images/44.webp",
+	title: "Eco Friendly Ganesh Murti",
+	price: "7000"
 }
 ];
 
@@ -40,9 +40,9 @@ function getCardElem(imageElem, counter){
 	var str = `<div class="col s12 m6"><div class="card">
 	           <div class="card-image">
 	             	<img src="` + imageElem.src + `">
-	             	<span class="card-title">` + imageElem.title + `</span></div>
+	             	<span class="card-title"><h4>` + imageElem.title + `</h4></span></div>
 	             <div class="card-content">
-	             	<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+	             	<p>Om Gan Ganapatay Namo Namah! Shri Siddhivinayak Namo Namah! Asta Vinayak Namo Namah! Ganapati Bappa Moraiya!</p>
 	             </div>
 	             <div class="card-action"><a class="waves-effect waves-light btn modal-trigger" href="#modal1" onclick="markThisClicked(`+ counter +`)">Get Price</a></div></div></div>`;
 	return str;
